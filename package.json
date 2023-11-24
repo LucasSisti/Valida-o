@@ -1,0 +1,27 @@
+{
+  "name": "validacao",
+  "version": "1.0.0",
+  "description": "projeto",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LucasSisti/Valida-o.git"
+  },
+  "keywords": [
+    "validamento"
+  ],
+  "author": "Lucas",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/LucasSisti/Valida-o/issues"
+  },
+  "homepage": "https://github.com/LucasSisti/Valida-o#readme",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "express": "^4.18.2"
+  }
+}

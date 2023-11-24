@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Faça seu Cadastro na ONG Save Pets (ONG DO PI)</h1>
+    <h2>Cadastro</h2>
+    <form name="cadastro" action="http://localhost:3000/cadastro" method="post">
+        <p>Digite seu nome:</p>
+        <input type="text" name="txtnome" size="40" maxlength="35">
+        
+        <p>Sua data de nascimento:</p>
+        <input type="text" name="txtdtnascimento" size="40" maxlength="10">
+        
+        <p>Digite seu endereço:</p>
+        <input type="text" name="txtend" size="40" maxlength="50">
+        
+        <p>Complemento:</p>
+        <input type="text" name="txtcomplemento" size="10" maxlength="10">
+
+        <p>Digite seu e-mail:</p>
+        <input type="text" name="txtemail" size="40" maxlength="30">
+        
+        <p>Seu sexo:</p>
+        <input type="radio" name="opcaosexo" value="masculino" />Masculino
+        <input type="radio" name="opcaosexo" value="feminino" />Feminino
+        <input type="radio" name="opcaosexo" value="outro" />Outro
+        <input type="radio" name="opcaosexo" value="naoinformar" />Não quero informar
+        
+        <p>Crie a sua senha:</p>
+        <p>Sua senha deve ter entre 7 e 14 caracteres</p>
+        <input type="password" name="txtsenha" size="20" maxlength="14" value="">
+         
+        <p>Confirme sua senha:</p>
+        <input type="password" name="txtsenhaconfirmacao" size="20" maxlength="14" value="">
+        
+        <p>Que tipos de animais você adotaria?</p>
+        <input type=checkbox name="opcaoanimal" value="cachorros" />Cachorros<br />
+        <input type=checkbox name="opcaoanimal" value="gatos" />Gatos<br />
+        <input type=checkbox name="opcaoanimal" value="raposas" />Raposas<br />
+        <input type=checkbox name="opcaoanimal" value="ratos" />Ratos<br />
+        <input type=checkbox name="opcaoanimal" value="capivaras" />Capivaras<br />
+        <input type=checkbox name="opcaoanimal" value="passaros" />Pássaros<br />
+        <input type=checkbox name="opcaoanimal" value="hamsters" />Hamsters<br />
+       
+        <input type="submit" value="Enviar">
+    </form>
+</body>
+
+</html>
