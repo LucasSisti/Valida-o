@@ -12,13 +12,55 @@ app.use(bodyParser.json());
 function validarDados(dados) {
     const erros = {};
 
-    // Adicione suas regras de validação aqui
-    // Exemplo: Verificar se o campo nome está preenchido
+    // Verificar se campos obrigatórios estão preenchidos
     if (!dados.txtnome) {
         erros.nome = 'Campo obrigatório.';
     }
 
-    // Adicione mais verificações conforme necessário
+    if (!dados.txtend) {
+        erros.endereco = 'Campo obrigatório.';
+    }
+
+    if (!dados.txtemail) {
+        erros.email = 'Campo obrigatório.';
+    }
+
+    if (!dados.txtdtnascimento) {
+        erros.dataNascimento = 'Campo obrigatório.';
+    }
+
+    if (!dados.txtsenha) {
+        erros.senha = 'Campo obrigatório.';
+    }
+
+    if (!dados.txtsenhaconfirmacao) {
+        erros.senhaConfirmacao = 'Campo obrigatório.';
+    }
+
+    if (!dados.opcaosexo) {
+        erros.sexo = 'Campo obrigatório.';
+    }
+
+    if (!dados.opcaoanimal) {
+        erros.animais = 'Campo obrigatório.';
+    }
+
+    // Verificar se as senhas estão certas
+    if (dados.txtsenha !== dados.txtsenhaconfirmacao) {
+        erros.senhaConfirmacao = 'As senhas não correspondem.';
+    }
+
+    // Verificar o formato da data de nascimento (assumindo formato DD/MM/AAAA)
+    const regexDataNascimento = /^\d{2}\/\d{2}\/\d{4}$/;
+    if (!regexDataNascimento.test(dados.txtdtnascimento)) {
+        erros.dataNascimento = 'Formato de data de nascimento inválido. Use o formato DD/MM/AAAA.';
+    }
+
+    // Verificando o formato do e-mail
+    const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!regexEmail.test(dados.txtemail)) {
+        erros.email = 'Formato de e-mail inválido.';
+    }
 
     return erros; // Retorna o objeto de erros
 }
@@ -60,7 +102,17 @@ app.set('view engine', 'ejs');
 
 // Rota para renderizar o formulário inicial
 app.get('/', (req, res) => {
-    res.render('formulario', { mensagemErroNome: '' });
+    res.render('formulario', {
+        mensagemErroNome: '',
+        mensagemErroEndereco: '',
+        mensagemErroEmail: '',
+        mensagemErroDataNascimento: '',
+        mensagemErroSenha: '',
+        mensagemErroSenhaConfirmacao: '',
+        mensagemErroSexo: '',
+        mensagemErroAnimais: '',
+        dadosFormulario: {},
+    });
 });
 
 app.listen(port, () => {
