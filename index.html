@@ -1,3 +1,4 @@
+<!-- views/formulario.ejs -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,44 +13,52 @@
 <body>
     <h1>Faça seu Cadastro na ONG Save Pets (ONG DO PI)</h1>
     <h2>Cadastro</h2>
-    <form name="cadastro" action="http://localhost:3000/cadastro" method="post">
+    <form name="cadastro" action="/cadastro" method="post">
         <p>Digite seu nome:</p>
-        <input type="text" name="txtnome" size="40" maxlength="35">
-        
+        <input type="text" name="txtnome" size="40" maxlength="35" value="<%= dadosFormulario && dadosFormulario.txtnome ? dadosFormulario.txtnome : '' %>">
+        <p style="color: red;"><%= mensagemErroNome %></p>
+
         <p>Sua data de nascimento:</p>
-        <input type="text" name="txtdtnascimento" size="40" maxlength="10">
-        
+        <input type="text" name="txtdtnascimento" size="40" maxlength="10" value="<%= dadosFormulario && dadosFormulario.txtdtnascimento ? dadosFormulario.txtdtnascimento : '' %>">
+        <p style="color: red;"><%= mensagemErroDataNascimento %></p>
+
         <p>Digite seu endereço:</p>
-        <input type="text" name="txtend" size="40" maxlength="50">
-        
+        <input type="text" name="txtend" size="40" maxlength="50" value="<%= dadosFormulario && dadosFormulario.txtend ? dadosFormulario.txtend : '' %>">
+        <p style="color: red;"><%= mensagemErroEndereco %></p>
+
         <p>Complemento:</p>
-        <input type="text" name="txtcomplemento" size="10" maxlength="10">
+        <input type="text" name="txtcomplemento" size="10" maxlength="10" value="<%= dadosFormulario && dadosFormulario.txtcomplemento ? dadosFormulario.txtcomplemento : '' %>">
 
         <p>Digite seu e-mail:</p>
-        <input type="text" name="txtemail" size="40" maxlength="30">
-        
-        <p>Seu sexo:</p>
-        <input type="radio" name="opcaosexo" value="masculino" />Masculino
-        <input type="radio" name="opcaosexo" value="feminino" />Feminino
-        <input type="radio" name="opcaosexo" value="outro" />Outro
-        <input type="radio" name="opcaosexo" value="naoinformar" />Não quero informar
-        
+        <input type="text" name="txtemail" size="40" maxlength="30" value="<%= dadosFormulario && dadosFormulario.txtemail ? dadosFormulario.txtemail : '' %>">
+        <p style="color: red;"><%= mensagemErroEmail %></p>
+
+        <p>Selecione seu sexo:</p>
+        <input type="radio" name="opcaosexo" value="masculino" <%= dadosFormulario && dadosFormulario.opcaosexo === 'masculino' ? 'checked' : '' %>/>Masculino
+        <input type="radio" name="opcaosexo" value="feminino" <%= dadosFormulario && dadosFormulario.opcaosexo === 'feminino' ? 'checked' : '' %>/>Feminino
+        <input type="radio" name="opcaosexo" value="outro" <%= dadosFormulario && dadosFormulario.opcaosexo === 'outro' ? 'checked' : '' %>/>Outro
+        <input type="radio" name="opcaosexo" value="naoinformar" <%= dadosFormulario && dadosFormulario.opcaosexo === 'naoinformar' ? 'checked' : '' %>/>Não quero informar
+        <p style="color: red;"><%= mensagemErroSexo %></p>
+
         <p>Crie a sua senha:</p>
         <p>Sua senha deve ter entre 7 e 14 caracteres</p>
         <input type="password" name="txtsenha" size="20" maxlength="14" value="">
-         
+        <p style="color: red;"><%= mensagemErroSenha %></p>
+
         <p>Confirme sua senha:</p>
         <input type="password" name="txtsenhaconfirmacao" size="20" maxlength="14" value="">
-        
+        <p style="color: red;"><%= mensagemErroSenhaConfirmacao %></p>
+
         <p>Que tipos de animais você adotaria?</p>
-        <input type=checkbox name="opcaoanimal" value="cachorros" />Cachorros<br />
-        <input type=checkbox name="opcaoanimal" value="gatos" />Gatos<br />
-        <input type=checkbox name="opcaoanimal" value="raposas" />Raposas<br />
-        <input type=checkbox name="opcaoanimal" value="ratos" />Ratos<br />
-        <input type=checkbox name="opcaoanimal" value="capivaras" />Capivaras<br />
-        <input type=checkbox name="opcaoanimal" value="passaros" />Pássaros<br />
-        <input type=checkbox name="opcaoanimal" value="hamsters" />Hamsters<br />
-       
+        <input type="checkbox" name="opcaoanimal" value="cachorros" <%= dadosFormulario && dadosFormulario.opcaoanimal && dadosFormulario.opcaoanimal.includes('cachorros') ? 'checked' : '' %>/>Cachorros<br />
+        <input type="checkbox" name="opcaoanimal" value="gatos" <%= dadosFormulario && dadosFormulario.opcaoanimal && dadosFormulario.opcaoanimal.includes('gatos') ? 'checked' : '' %>/>Gatos<br />
+        <input type="checkbox" name="opcaoanimal" value="raposas" <%= dadosFormulario && dadosFormulario.opcaoanimal && dadosFormulario.opcaoanimal.includes('raposas') ? 'checked' : '' %>/>Raposas<br />
+        <input type="checkbox" name="opcaoanimal" value="ratos" <%= dadosFormulario && dadosFormulario.opcaoanimal && dadosFormulario.opcaoanimal.includes('ratos') ? 'checked' : '' %>/>Ratos<br />
+        <input type="checkbox" name="opcaoanimal" value="capivaras" <%= dadosFormulario && dadosFormulario.opcaoanimal && dadosFormulario.opcaoanimal.includes('capivaras') ? 'checked' : '' %>/>Capivaras<br />
+        <input type="checkbox" name="opcaoanimal" value="passaros" <%= dadosFormulario && dadosFormulario.opcaoanimal && dadosFormulario.opcaoanimal.includes('passaros') ? 'checked' : '' %>/>Pássaros<br />
+        <input type="checkbox" name="opcaoanimal" value="hamsters" <%= dadosFormulario && dadosFormulario.opcaoanimal && dadosFormulario.opcaoanimal.includes('hamsters') ? 'checked' : '' %>/>Hamsters<br />
+        <p style="color: red;"><%= mensagemErroAnimais %></p>
+
         <input type="submit" value="Enviar">
     </form>
 </body>
